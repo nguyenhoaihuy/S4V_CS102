@@ -4,6 +4,7 @@ import time
 import random
 from const import *
 from player import Player
+from spritesheet import Trampoline
 
 #initialize pygame
 pg.init()
@@ -17,14 +18,22 @@ def main():
     clock = pg.time.Clock()
     #create player
     player = Player(30,HEIGHT-PLAYER_HEIGHT,PLAYER_SPRITE_DIR,0.2)
+    trampoline = Trampoline(500,HEIGHT-100,TRAMPOLINE_DIR,0.05)
     moving_left, moving_right = False, False
     # main function to redraw all objects
     def redraw_window():
         WIN.blit(BG,(0,0))
         pg.draw.line(WIN, RED, (0,HEIGHT-10), (WIDTH, HEIGHT-10))
         pg.draw.rect(WIN, RED, (600, HEIGHT-200,200,50))
+        
+
+        trampoline.move()
+        trampoline.draw(WIN)
+        if player.is_on_trampoline(trampoline):
+            player.fly = True
         player.move(moving_left,moving_right)
         player.draw(WIN)
+        
 
         #cleanObjects
         pg.display.update()

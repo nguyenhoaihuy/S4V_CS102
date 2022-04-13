@@ -23,3 +23,8 @@ IDLE = 0
 JUMP = 1
 MOVE = 2
 
+TRAMPOLINE_DIR = 'assets/trampoline'
+TRAMPOLINE_ACTION = ['blow']
+TRAMPOLINE_VEL = -20
+MAX_TRAMPOLINE_VEL = -20
+
